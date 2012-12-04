@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# AvrStudio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "duck", "duck.cproj", "{FEE31E0F-40F4-11E0-93CF-000C29A22D21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEE31E0F-40F4-11E0-93CF-000C29A22D21}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FEE31E0F-40F4-11E0-93CF-000C29A22D21}.Debug|AVR.Build.0 = Debug|AVR
+		{FEE31E0F-40F4-11E0-93CF-000C29A22D21}.Release|AVR.ActiveCfg = Release|AVR
+		{FEE31E0F-40F4-11E0-93CF-000C29A22D21}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
