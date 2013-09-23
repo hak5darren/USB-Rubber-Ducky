@@ -1,5 +1,6 @@
 // File:         Encoder.java
 // Created:      8/10/2011
+// Modified:     9/23/2013 (JeromSar)
 // Author:       Jason Appelbaum Jason@Hak5.org	
 
 import java.io.DataInputStream;
@@ -127,16 +128,22 @@ public class Encoder {
 		for (int i = 0; i < instructions.length; i++) {
 			try {
 				boolean delayOverride = false;
+
+				if ("".equals(instructions[i])) {
+					continue;  
+				}
+
 				String commentCheck = instructions[i].substring(0, 2);
-				if (commentCheck.equals("//"))
+				if (commentCheck.equals("//")) {
 					continue;
+				}
 
 				String instruction[] = instructions[i].split(" ", 2);
 
-				instruction[0].trim();
+				instruction[0] = instruction[0].trim();
 
 				if (instruction.length == 2) {
-					instruction[1].trim();
+					instruction[1] = instruction[1].trim();
 				}
 
 				if (instruction[0].equals("DEFAULT_DELAY")
@@ -408,6 +415,7 @@ public class Encoder {
 			fos.write(data);
 			fos.flush();
 			fos.close();
+			System.out.println("Done! " + data.length + " bytes written.");
 		} catch (Exception e) {
 			System.out.print("Failed to write hex file!");
 		}
