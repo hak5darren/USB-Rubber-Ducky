@@ -287,7 +287,11 @@ public class Encoder {
 						file.add((byte) 0xE3);
 						file.add((byte) 0x00);
 					} else {
-						file.add(charToByte(instruction[1].charAt(0)));
+						if (instruction[1].equals("SPACE")) {
+							file.add((byte) 0x2C);
+						} else {
+						    file.add(charToByte(instruction[1].charAt(0)));
+						}
 						file.add((byte) 0x08);
 					}
 				} else if (instruction[0].equals("SYSTEMPOWER")) {
