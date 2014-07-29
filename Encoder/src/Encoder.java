@@ -127,9 +127,14 @@ public class Encoder {
 		for (int i = 0; i < instructions.length; i++) {
 			try {
 				boolean delayOverride = false;
-				String commentCheck = instructions[i].substring(0, 2);
-				if (commentCheck.equals("//"))
-					continue;
+
+                // Is this line too short for the comment check?
+                if (instructions[i].length() > 2) {
+                    // No, check to see if this is a comment
+                    String commentCheck = instructions[i].substring(0, 2);
+                    if (commentCheck.equals("//"))
+                        continue;
+                }
 
 				String instruction[] = instructions[i].split(" ", 2);
 
@@ -141,7 +146,7 @@ public class Encoder {
 
 				if (instruction[0].equals("DEFAULT_DELAY")
 						|| instruction[0].equals("DEFAULTDELAY")) {
-					defaultDelay = (byte) Integer.parseInt(instruction[1]
+					defaultDelay = Integer.parseInt(instruction[1]
 							.trim());
 				} else if (instruction[0].equals("DELAY")) {
 					int delay = Integer.parseInt(instruction[1].trim());
