@@ -127,9 +127,14 @@ public class Encoder {
 		for (int i = 0; i < instructions.length; i++) {
 			try {
 				boolean delayOverride = false;
-				String commentCheck = instructions[i].substring(0, 2);
-				if (commentCheck.equals("//"))
-					continue;
+
+                // Is this line too short for the comment check?
+                if (instructions[i].length() > 2) {
+                    // No, check to see if this is a comment
+                    String commentCheck = instructions[i].substring(0, 2);
+                    if (commentCheck.equals("//"))
+                        continue;
+                }
 
 				String instruction[] = instructions[i].split(" ", 2);
 
