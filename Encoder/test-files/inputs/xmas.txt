@@ -1,0 +1,79 @@
+REM Happy Holidays By Ghostshell
+GUI r
+DELAY 200
+STRING notepad.exe
+ENTER
+DELAY 300
+STRING          _
+ENTER
+STRING       |\ 0 /|
+ENTER
+STRING        |/|\|
+ENTER
+STRING          |
+ENTER
+STRING          @
+ENTER
+STRING         /+\
+ENTER
+STRING        o/@\\
+ENTER
+STRING      +//o/\\o
+ENTER
+STRING      //+/@\\/+o
+ENTER
+STRING     /\/o//+/\\\\
+ENTER
+STRING    +///\//\o\o+\\o
+ENTER
+STRING   o/+@/++/\\\@\\/\+
+ENTER
+STRING  /\/+///o/@\o+/\+\\
+ENTER
+STRING o/+/\/@//||\/\\o\\\o _
+ENTER
+STRING  /__ /|  ||      /__ /|
+ENTER
+STRING | * | | (__)___ | * | |
+ENTER
+STRING |___|/_   /__ /||___|/
+ENTER
+STRING     /_/| | * | |
+ENTER
+STRING    |_|/  |___|/
+ENTER
+STRING      `-.____/
+ENTER
+ENTER
+STRING Twas the
+ENTER
+STRING Night
+ENTER
+STRING before
+ENTER
+STRING Christmas...
+ENTER
+STRING And All Through
+ENTER
+STRING The House....
+ENTER
+STRING Not A Creature Was
+ENTER
+STRING Sturring...
+ENTER
+STRING Not Even
+ENTER
+STRING A Mouse
+ENTER
+ENTER
+STRING Happy Holidays To All!!
+ENTER
+ENTER
+STRING From 
+ENTER
+ENTER
+STRING Cheers!!
+ENTER
+DELAY 100
+ALT SPACE
+STRING x

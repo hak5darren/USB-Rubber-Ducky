@@ -1,0 +1,83 @@
+GUI d
+CONTROL ESCAPE
+STRING mouse
+REM this is opening up the mouse config.
+ENTER
+STRING n
+TAB
+STRING n
+TAB
+STRING n
+REM this set all of there mouse clicks to nothing (user cant click :D)
+TAB
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+REM this makes the double click speed area the slowest
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+RIGHTARROW
+REM this switches over to the "pointers"
+TAB
+STRING w
+TAB
+TAB
+STRING b
+REM changes the cursor look to busy 
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+RIGHTARROW
+TAB
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+LEFTARROW
+REM makes there "busy" cursor go as slow as possible
+STRING d
+STRING s
+REM makes the cursor have a "trail" and if ctrl+clicked a "location"
+STRING a
+ENTER
+GUI
+STRING task manager
+TAB
+TAB
+TAB
+TAB
+TAB
+RIGHTARROW
+TAB
+STRING explorer
+TAB
+STRING e
+ENTER
+REM This open taskmanager, and turns of explorer (this runs windows) to get back on just ctrl+alt+dlt and goto processes and start "explorer.exe" without ""
+REM Enjoy, ps if this has errors please let me know, email at Calebhutch@yahoo.com thanks

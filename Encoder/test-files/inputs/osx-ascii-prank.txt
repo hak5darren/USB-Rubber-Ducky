@@ -1,0 +1,58 @@
+REM Author: Antti Kuosmanen
+REM Title: OSX Ascii Prank
+REM Description: Tells you to fuck off
+DELAY 1000
+GUI SPACE
+STRING terminal
+DELAY 1000
+ENTER
+DELAY 250
+STRING say fuck off asshole
+ENTER
+GUI n
+DELAY 250
+STRING echo '
+ENTER
+STRING                 $$$$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING               $$    $$
+ENTER
+STRING           $$$$$$    $$$$$$
+ENTER
+STRING         $$    $$    $$    $$$$
+ENTER
+STRING         $$    $$    $$    $$  $$
+ENTER 
+STRING $$$$$$  $$    $$    $$    $$    $$
+ENTER
+STRING $$    $$$$                $$    $$
+ENTER
+STRING $$      $$                      $$
+ENTER
+STRING   $$    $$                      $$
+ENTER
+STRING    $$$  $$                      $$
+ENTER
+STRING     $$                          $$
+ENTER
+STRING      $$$                        $$
+ENTER
+STRING       $$                      $$$
+ENTER
+STRING        $$$                    $$
+ENTER
+STRING         $$                    $$
+ENTER
+STRING          $$$                $$$
+ENTER
+STRING           $$                $$
+ENTER
+STRING           $$$$$$$$$$$$$$$$$$$$

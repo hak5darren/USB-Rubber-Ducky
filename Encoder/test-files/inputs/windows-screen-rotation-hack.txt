@@ -1,0 +1,20 @@
+CONTROL ESCAPE
+DELAY 50
+STRING Screen Resolution
+DELAY 50
+ENTER
+DELAY 100
+TAB
+TAB
+TAB
+DOWN
+DOWN
+TAB
+TAB
+TAB
+TAB
+TAB
+ENTER
+TAB
+ENTER
+REM if you find an error email me at "brayden.h96@gmail.com".

