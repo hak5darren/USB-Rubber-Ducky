@@ -49,6 +49,7 @@ typedef enum injectState {
 	state_KEY_DOWN,
 	state_KEY_UP,
 	state_MOD_DOWN,
+	state_MOD_HOLD,
 	state_MOD_KEY_DOWN,
 	state_MOD_KEY_UP,
 	state_MOD_UP,
@@ -107,6 +108,7 @@ void process_frame(uint16_t framenumber)
 	static uint8_t wait = 0;
 	static uint16_t debounce = 0;
 	static uint16_t injectToken = 0x0000;
+	static bool mod = false;
 	
 	// scan process running each 2ms
 	cpt_sof++;
@@ -156,7 +158,16 @@ void process_frame(uint16_t framenumber)
 			}
 			else if( ( injectToken>>8 ) == 0x00 ) {
 				state = state_KEY_DOWN;
-			}				
+			}
+			else if( ( injectToken>>8 ) == (injectToken&0xff) ) {
+				if (mod == false){
+					state = state_MOD_HOLD;
+				}
+				else{
+					mod = false;
+					state = state_MOD_UP;
+				}
+			}
 			else {
 				state = state_MOD_DOWN;					
 			}					
@@ -176,7 +187,13 @@ void process_frame(uint16_t framenumber)
 			udi_hid_kbd_modifier_down(injectToken>>8);
 			state = state_MOD_KEY_DOWN;
 			break;
-
+			
+		case state_MOD_HOLD:
+			udi_hid_kbd_modifier_down(injectToken>>8);
+			mod = true;
+			state = state_INJECTING;
+			break;
+			
 		case state_MOD_KEY_DOWN:
 			udi_hid_kbd_down(injectToken&0xff);
 			state = state_MOD_KEY_UP;

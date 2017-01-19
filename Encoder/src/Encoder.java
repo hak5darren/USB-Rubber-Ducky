@@ -11,6 +11,7 @@
 // Modified:	 5/2/2013 midnitesnake "added skip over empty lines"
 // Modified:     1/12/2014 Benthejunebug "added ALT-TAB"
 // Modified:	 9/13/2016 rbeede "added STRING_DELAY n text"
+// Modified:	 1/19/2017 sipa- "added ASCII"
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -44,6 +45,7 @@ public class Encoder {
                         + "   -o [file ..] \t\tOutput File\n"
                         + "   -l [file ..] \t\tKeyboard Layout (us/fr/pt or a path to a properties file)\n\n"
                         + "Script Commands:\n"
+			+ "   ASCII [num code] (ex: ASCII 0178 for ²)\n"
                         + "   ALT [key name] (ex: ALT F4, ALT SPACE)\n"
                         + "   CTRL | CONTROL [key name] (ex: CTRL ESC)\n"
                         + "   CTRL-ALT [key name] (ex: CTRL-ALT DEL)\n"
@@ -276,6 +278,18 @@ public class Encoder {
                                                 	}
                                                 }
                                         }
+						
+                    			} else if (instruction[0].equals("ASCII")) {
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT")));
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT")));
+                        			for (int j = 0; j < instruction[1].length(); j++) {
+                            				file.add(keyboardProps.getProperty("KEYPAD_" + instruction[1].charAt(j)));
+							file.add((byte) 0x00);
+                        			}
+                        			file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT")));
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT")));
+					}						
+											
                                 	} else if (instruction[0].equals("CONTROL")
                                                 || instruction[0].equals("CTRL")) {
                                         if (instruction.length != 1){
@@ -471,6 +485,10 @@ public class Encoder {
                 instruction = instruction.trim();
                 if(keyboardProps.getProperty("KEY_"+instruction)!=null)
                         return strToByte(keyboardProps.getProperty("KEY_"+instruction));
+		
+		if(keyboardProps.getProperty("KEYPAD_"+instruction)!=null)
+                        return strToByte(keyboardProps.getProperty("KEYPAD_"+instruction));
+		
                 /* instruction different from the key name */
                 if(instruction.equals("ESCAPE"))
                         return strInstrToByte("ESC");
