@@ -30,6 +30,7 @@ Script Commands:
    SHIFT [key name] (ex: SHIFT DEL)
    REPEAT [Number] (Repeat last command N times)
    STRING [any character of your layout]
+   STRING_DELAY [ms] [any string of characters of your layout]
    [key name] (anything in the keyboard.properties)
 
 Note:
