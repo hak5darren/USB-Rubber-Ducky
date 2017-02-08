@@ -344,6 +344,110 @@ public class Encoder {
                                         } else{
                                             // do something?
                                         }
+				} else if (instruction[0].equals("HID")) {
+						//if no argument given, abort parsing
+						if (instruction.length < 2) {loop--; continue;}
+
+						//split argument into KEY and MODIFIER
+						String str_key_mod[] = instruction[1].trim().split(" ",2);
+						String str_key=str_key_mod[0].trim();
+						String str_mod=null;
+						if (str_key_mod.length > 1) str_mod=str_key_mod[1].trim();
+						int key=-1; //int to handle not set condition with -1
+						int mod=-1; //int to handle not set condition with -1
+
+						//parse key
+
+						//check if KEY is given as integer or property
+						if (str_key.length() > 4 && str_key.substring(0,4).equals("KEY_"))
+						{
+
+							// key given as "KEY_" property, convert
+							String hid_key=keyboardProps.getProperty(str_key);
+							if (hid_key == null) hid_key=layoutProps.getProperty(str_key); //for KEYS only in loaclized layout, for example KEY_NON_US_100
+							// still no key found, abort
+							if (hid_key==null) 
+							{
+								loop--;
+								continue;
+							
+							}
+							key=strToByte(hid_key);
+							//check if key is 0x00 which is reserved for DELAY
+						}
+						else
+						{
+							key=Integer.decode(str_key);
+						}
+						if (key==0)
+						{
+							System.out.println("You are not allowed to use USB HID key 0x00, reserved for DELAY");
+							loop--;
+							continue;
+						}
+
+						//parse modifier(s)
+
+						//are modifier set
+						if (str_mod == null)
+						{
+							//no modifier
+							mod=0x00;
+						}
+						else
+						{
+							//yes, modifier(s) present
+
+							// remove possible braces and logical or operators (only eye candy for readability)
+							// shrink multiple spaces to single space
+							str_mod = str_mod.replaceAll("[(|)]"," ").replaceAll(" +"," ");
+							String modifiers[]=str_mod.trim().split(" ");
+							//parse every modifier given
+							for (String modifier: modifiers)
+							{
+								if (mod==-1) mod=0;
+								modifier=modifier.trim();
+
+								//check if MODIFIER is given as integer or property
+								if (modifier.length() > 12 && modifier.substring(0,12).equals("MODIFIERKEY_"))
+								{
+									// MODIFIER given as "MOIFIER_" property, convert
+									String hid_mod=keyboardProps.getProperty(modifier);
+									if (hid_mod == null) hid_mod=layoutProps.getProperty(modifier); //for MODIFIERS only in loaclized layout
+									// modifier not found, ignore and go to next
+									if (hid_mod==null) 
+									{
+										System.out.println("Modifier not found: " + modifier + "... ignoring");
+									}
+									else
+									{
+										// if found boolean OR to final modifier
+										mod|=strToByte(hid_mod);
+									}
+								}
+								else
+								{
+
+									int mod_int = (int)Integer.decode(modifier);
+									mod|=(byte) mod_int;
+								}
+
+
+
+
+
+							}
+						}
+
+						//add key and mod byte
+						if ((key != -1) && (mod != -1))
+						{
+							file.add((byte) (key & 0xFF));
+							file.add((byte) (mod & 0xFF));
+//System.out.println("HID added with key: " + (key & 0xFF) + " mod: " + (mod & 0xFF));
+						}
+
+                                	
                                     } else if (instruction[0].equals("REM")) {
                                         /* no default delay for the comments */
                                         delayOverride = true;

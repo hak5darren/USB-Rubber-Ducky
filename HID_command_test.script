@@ -1,0 +1,32 @@
+REM Test for HID
+
+REM Wrong command syntax (no arguments)
+HID
+
+REM Send key without modifier
+HID KEY_A  
+
+REM Send key with modifier given in hex
+HID KEY_A 0x08
+
+REM Send key and modifier as hex value
+HID 0x0A 0x08
+
+REM Send key and modifier as decimal value
+HID 10 8
+
+REM Send unallowed key
+HID 0
+HID 0x00
+HID 0x00 MODIFIERKEY_LEFT_SHIFT
+
+REM Send key defined in de.layout (not keyboard.layout) and test braces
+REM <ALT GR>+KEY_NON_US results in '|' on German keybooard layout
+HID KEY_NON_US_100 (MODIFIERKEY_RIGHT_ALT)
+
+REM combining modifiers
+REM <SHIFT>+<ALT GR>+KEY_NON_US results in '¦' on German keybooard layout
+HID KEY_NON_US_100 (MODIFIERKEY_LEFT_SHIFT | MODIFIERKEY_RIGHT_ALT)
+
+REM Invalid modifier "MODIFIERKEY_CTRL_ALT" amon valid ones
+HID KEY_NON_US_100 (MODIFIERKEY_LEFT_SHIFT | MODIFIERKEY_RIGHT_ALT | MODIFIERKEY_CTRL_ALT)
