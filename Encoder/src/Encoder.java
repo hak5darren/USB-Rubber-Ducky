@@ -351,8 +351,12 @@ public class Encoder {
                                 	} else if (instruction[0].equals("WINDOWS")
                                                 || instruction[0].equals("GUI")) {
                                         if (instruction.length == 1) {
+						// in this case the GUI-Key is pressed without an additional key
+						// this means the KEY_LEFT_GUI with modifier MODIFIERKEY_LEFT_GUI has to be sent.
+						// Sending MODIFIERKEY_LEFT_GUI (0x08) with no modifier (0x00) corresponds to
+						// a lowercase 'e'
+                                                file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_GUI")));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
-                                                file.add((byte) 0x00);
                                         } else {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
