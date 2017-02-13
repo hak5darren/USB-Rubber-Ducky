@@ -45,6 +45,7 @@ public class Encoder {
                         + "   -l [file ..] \t\tKeyboard Layout (us/fr/pt or a path to a properties file)\n\n"
                         + "Script Commands:\n"
                         + "   ALT [key name] (ex: ALT F4, ALT SPACE)\n"
+                        + "   HID [key code] [modifiers]  (ex: HID KEY_A MODIFIERKEY_LEFT_SHIFT)\n"
                         + "   CTRL | CONTROL [key name] (ex: CTRL ESC)\n"
                         + "   CTRL-ALT [key name] (ex: CTRL-ALT DEL)\n"
                         + "   CTRL-SHIFT [key name] (ex: CTRL-SHIFT ESC)\n"
