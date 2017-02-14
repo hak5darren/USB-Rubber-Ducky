@@ -18,6 +18,7 @@ Arguments:
 
 Script Commands:
    ALT [key name] (ex: ALT F4, ALT SPACE)
+   HID [key code] [modifiers]  (ex: HID KEY_A MODIFIERKEY_LEFT_SHIFT)
    ALT-SHIFT (Input Lanugage Swap)
    CTRL | CONTROL [key name] (ex: CTRL ESC)
    CTRL-ALT [key name] (ex: CTRL-ALT DEL)
