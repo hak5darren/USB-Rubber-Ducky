@@ -18,7 +18,8 @@ else
     EXIT=1
 fi
 
-if ! which dfu-programmer &>/dev/null; then
+DFU=`which dfu-programmer`
+if [ -z "$DFU" ]; then 
     echo "dfu-programmer not found.  Go install it and try again."
     EXIT=1
 fi
