@@ -6,30 +6,30 @@ $java -jar duckencode.jar -i script.txt -o inject.bin -l resources/mylayout.prop
 
 ----------
 
-Hak5 Duck Encoder 2.6.3
+Hak5 Duck Encoder 2.6.4
 
-usage: duckencode -i [file ..] encode specified file
-   or: duckencode -i [file ..] -o [file ..] encode to specified file
+Usage: duckencode -i [file ..]                  encode specified file
+   or: duckencode -i [file ..] -o [file ..]     encode to specified file
 
 Arguments:
-   -i [file ..]         Input File
-   -o [file ..]         Output File
-   -l [file ..]         Keyboard Layout (us/uk/fr/pt or a path to a properties file)
+   -i [file ..]                 Input File
+   -o [file ..]                 Output File
+   -l [file ..]                 Keyboard Layout (us/fr/pt or a path to a properties file)
 
 Script Commands:
    ALT [key name] (ex: ALT F4, ALT SPACE)
-   ALT-SHIFT (Input Lanugage Swap)
    CTRL | CONTROL [key name] (ex: CTRL ESC)
    CTRL-ALT [key name] (ex: CTRL-ALT DEL)
    CTRL-SHIFT [key name] (ex: CTRL-SHIFT ESC)
-   DEFAULT_DELAY | DEFAULTDELAY [Time in millisecond * 10] (change the delay between each command)
-   DELAY [Time in millisecond * 10] (used to overide temporary the default delay)
-   COMMAND | COMMAND [key] (For OSX Users ex: COMMAND SPACE)
+   DEFAULT_DELAY | DEFAULTDELAY [Time in millisecond] (change the delay between each command)
+   DELAY [Time in millisecond] (used to overide temporary the default delay)
    GUI | WINDOWS [key name] (ex: GUI r, GUI l)
    REM [anything] (used to comment your code, no obligation :) )
+   ALT-SHIFT (swap language)
    SHIFT [key name] (ex: SHIFT DEL)
-   REPEAT [Number] (Repeat last command N times)
    STRING [any character of your layout]
+   STRING_DELAY [Number] [any character of your layout] (Number is ms delay between each character)
+   REPEAT [Number] (Repeat last instruction N times)
    [key name] (anything in the keyboard.properties)
 
 Note:
