@@ -1,0 +1,12 @@
+REM Author: Cooper Hanson
+REM Title: OSX Desktop Prank
+REM Description: Changes the Desktop picture to Vanellope Von Schweetz from Wreck-It Ralph
+DEFAULTDELAY 50
+DELAY 500
+GUI SPACE
+STRING Terminal
+ENTER
+STRING cd ~/Desktop; curl -O https://media.sketchfab.com/urls/521aa1a4f3ef4b71bd91a9ade23a77e4/dist/thumbnails/95ed1f1601d649df9b4c2455ff31b261/1920x1080.jpeg; osascript -e 'tell application "Finder"' -e 'set desktop picture to file "1920x1080.jpeg" of desktop' -e 'end tell'; rm ~/Desktop/1920x1080.jpeg
+ENTER
+DELAY 500
+GUI Q
