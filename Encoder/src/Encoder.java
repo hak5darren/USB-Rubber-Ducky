@@ -11,6 +11,7 @@
 // Modified:	 5/2/2013 midnitesnake "added skip over empty lines"
 // Modified:     1/12/2014 Benthejunebug "added ALT-TAB"
 // Modified:	 9/13/2016 rbeede "added STRING_DELAY n text"
+// Modified:	 5/3/2019 Alessandro Di Diego "add support for characters that need 2+ modifiers"
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -32,7 +33,7 @@ public class Encoder {
         private static Properties keyboardProps = new Properties();
         /* contains the language layout */
         private static Properties layoutProps = new Properties();
-        private static String version = "2.6.4";
+        private static String version = "2.6.5";
         private static Boolean debug=false;
     
         public static void main(String[] args) {
@@ -439,13 +440,17 @@ public class Encoder {
         private static byte[] codeToBytes (String str){
                 if(layoutProps.getProperty(str) != null){
                         String keys[] = layoutProps.getProperty(str).split(",");
-                        byte[] byteTab = new byte[keys.length];
+                        // if there are more than two keys, than all the modifiers will be collapsed
+                        // in a single byte by doing a bitwise OR between them
+                        byte[] byteTab = new byte[Math.min(keys.length, 2)];
                     for(int j=0;j<keys.length;j++){
                         String key = keys[j].trim();
                         if(keyboardProps.getProperty(key) != null){
-                                byteTab[j] = strToByte(keyboardProps.getProperty(key).trim());
+                                byteTab[Math.min(j, 1)] = (byte) (j<2 ? strToByte(keyboardProps.getProperty(key).trim()) : ((byte) (strToByte(keyboardProps.getProperty(key).trim())) 
+                                                        | (byteTab[1])));
                         }else if(layoutProps.getProperty(key) != null){
-                                byteTab[j] = strToByte(layoutProps.getProperty(key).trim());
+                                byteTab[Math.min(j, 1)] = (byte) (j<2 ? strToByte(layoutProps.getProperty(key).trim()) : ((byte) (strToByte(layoutProps.getProperty(key).trim())) 
+                                                        | (byteTab[1])));
                         }else{
                                 System.out.println("Key not found:"+key);
                                 byteTab[j] = (byte) 0x00;
